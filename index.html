@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pac-Man Factory</title>
+    <style>
+        button{
+            padding: 10px;
+            margin-left: 50px;
+            font-size: 2em;
+        }
+        img{
+            display:inline;
+            height: 100px;
+            width: 100px;
+            position: absolute;
+
+        }
+    </style>
+</head>
+<body>
+    <button onclick="makepac()">Add PacMan</button>
+    <button onclick="startGame()">Start Game</button>
+    
+
+    <script>
+        
+
+        let pacmen=[];
+        let X_pos=[];
+        let Y_pos=[];
+        let X_vel=[];
+        let Y_vel=[];
+        let count=0
+        
+        function makepac(){
+         let maxWidth=window.innerWidth-100;
+         let maxHeight=window.innerHeight-100;
+         let Xpos=Math.floor(Math.random()*maxWidth);
+         let Ypos=Math.floor(Math.random()*maxHeight);
+         let Xvel=Math.floor(Math.random()*30);
+         let Yvel=Math.floor(Math.random()*30);
+    
+         let pacman=document.createElement("img")
+         
+        
+        pacman.src="./pacman1.jpg";
+        
+        pacman.style.left=Xpos + "px";
+
+        pacman.style.top=Ypos + "px";
+
+        pacmen.push(pacman);
+        X_pos.push(Xpos);
+        Y_pos.push(Ypos);
+        X_vel.push(Xvel);
+        Y_vel.push(Yvel);
+
+        
+
+        // pacmen.push({image:pacman , X_pos:Xpos, Y_pos:Ypos , X_vel:Xvel,Y_vel:Yvel })
+
+        document.body.appendChild(pacman);
+        console.log(pacmen)
+    }
+    
+    function startGame() {
+       
+        count++;
+        
+        let pacman1=["./pacman1.jpg","./pacman2.jpg"];
+        let pacman2=["./pacman3.jpg","./pacman4.jpg"];
+        
+        
+           for(let i=0;i<pacmen.length;i++){
+
+            X_pos[i]=X_pos[i] + X_vel[i];
+
+            Y_pos[i]=Y_pos[i] + Y_vel[i] ;
+
+           if(X_pos[i] > X_pos[i]+ X_vel[i] || Y_pos[i] > Y_pos[i]+ Y_vel[i]){
+
+            if(count % 2 == 0){
+
+                    pacmen[i].src=pacman2[1]
+                }
+
+               else{
+
+                    pacmen[i].src=pacman2[0]
+                }
+            }
+                else{
+                          
+                    if(count % 2 == 0){ 
+                        pacmen[i].src=pacman1[1]
+                            }
+                        else{
+                            pacmen[i].src=pacman1[0]
+                              }
+                          }
+                          
+                  
+                          
+            
+                         
+           if(X_pos[i] <=0+5 || X_pos[i]>=window.innerWidth-120)
+           {
+            X_vel[i]=-X_vel[i];
+            
+           }
+            if(Y_pos[i]<=0 + 10 || Y_pos[i]>=window.innerHeight-110)
+           {
+            Y_vel[i]=-Y_vel[i];
+            
+               
+           }
+    
+            
+            pacmen[i].style.left=X_pos[i]+"px";
+            pacmen[i].style.top=Y_pos[i]+"px";
+
+        }
+           setTimeout(startGame,100)
+        }
+    </script>
+</body>
+</html>

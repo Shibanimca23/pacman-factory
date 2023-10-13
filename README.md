@@ -1,12 +1,21 @@
-# pacman-factory
-A basic Pac-Man animation created using HTML, CSS, and JavaScript.
+# RANDOM PACMAN
 
-## Steps to Run
+Description:
 
-step-1 Clone or download this repository to your local machine.
+The HTML document creates a basic Pac-Man game with randomly generated Pac-Man characters that bounce off the container's boundaries and change mouth states while moving.
 
-step-2 Open index.html in a web browser.
+How to run the code:
 
-## Future Enhancement
+step1:Save the HTML file with .html extension.
 
-In future, this can be enhanced by implementing more advanced pacman behaviour and improving  the visual effects  and animations.
+step2:Click the "Go Live" button.A new browser window will open, displaying pacman-game.
+
+## Future Enhancements:
+
+1)Add scoring and obstacles for increased complexity.
+
+2)Incorporate user controls for interactive gameplay.
+
+
+
+
